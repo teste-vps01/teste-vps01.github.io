@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JADIEL TV HD</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, green, black); /* Fundo gradiente verde e preto */
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Altura total da janela */
+            text-align: center;
+        }
+        .container {
+            width: 80%; /* Largura do contêiner principal */
+            max-width: 1200px; /* Limita a largura máxima */
+        }
+        .cabecalho {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            width: 100%;
+            background: linear-gradient(to right, green, black);
+            box-shadow: 0 0 15px 5px green;
+            animation: brilhar 1.5s infinite alternate;
+            margin-bottom: 30px; /* Espaçamento inferior */
+            border-radius: 15px; /* Bordas arredondadas */
+        }
+        .cabecalho h1 {
+            color: white;
+            font-size: 28px; 
+            font-weight: bold;
+        }
+        .categoria {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            background: linear-gradient(to right, green, black);
+            box-shadow: 0 0 15px 5px green;
+            animation: brilhar 1.5s infinite alternate;
+            margin-bottom: 20px; /* Espaçamento inferior */
+            border-radius: 10px; /* Bordas arredondadas */
+            border-bottom: 3px solid lime; /* Linha separadora abaixo da categoria */
+        }
+        .categoria h2 {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        @keyframes brilhar {
+            0% {
+                box-shadow: 0 0 15px 5px green;
+            }
+            100% {
+                box-shadow: 0 0 25px 10px lime;
+            }
+        }
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(3, 80px); /* Organiza os botões em 3 colunas */
+            grid-gap: 55px; /* Espaço entre os botões */
+            justify-content: center;
+        }
+        .botao {
+            width: 130px;
+            height: 130px;
+            background: linear-gradient(to right, green, black);
+            box-shadow: 0 0 15px 5px green;
+            animation: brilhar 1.5s infinite alternate;
+            border-radius: 15px; /* Bordas arredondadas nos botões */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .botao img {
+            width: 130px;
+            height: 130px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="cabecalho">
+            <h1>SEJA BEM-VINDO (A)</h1>
+        </div>
+        <div class="cabecalho">
+            <h1>JADIEL TV HD</h1>
+        </div>
+        <div class="categoria">
+            <h2>🎦CANAIS ABERTOS</h2>
+        </div>
+        <div class="botoes">
+            <a href="globo.html" class="botao">
+                <img src="globo.png" alt="Ícone 1">
+            </a>
+            <a href="sbt.html" class="botao">
+                <img src="sbt.png" alt="Ícone 2">
+            </a>
+            <a href="band.html" class="botao">
+                <img src="band.png" alt="Ícone 3">
+            </a>
+            <a href="recor.html" class="botao">
+                <img src="recor.png" alt="Ícone 4">
+            </a>
+            <a href="redetv.html" class="botao">
+                <img src="redetv.png" alt="Ícone 5">
+            
+            </a>
+        </div>
+    </div>
+</body>
+</html>
