@@ -1,0 +1,69 @@
+@media screen and (max-width: 767px) {
+    .logo_text {
+        display: none;
+    }
+
+    .main {
+        padding-top: 80px;
+        z-index: 0;
+    }
+
+    .header_top img {
+        display: block;
+    }
+
+    .header_top_search {
+        width: 80%;
+    }
+
+    .nav_header {
+        background: #1a1a1a;
+        padding-top: 0;
+        bottom: 0;
+    }
+
+    .canal_player {
+        height: 40vh;
+    }
+
+    .pages_padding {
+        padding-top: 10px;
+    }
+
+    .jogos_player {
+        height: 450px;
+        margin-top: 15svh;
+        padding: 0;
+    }
+
+    .nav-local-tab {
+        flex-wrap: wrap;
+        margin-top: 0;
+    }
+
+    .nav-local-tab-search {
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .nav-local-tab-local {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-local-tab-search {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar-collapse.show {
+        background: #0e0e0e;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin-top: 60px;
+        padding: 15px 0;
+    }
+
+}
