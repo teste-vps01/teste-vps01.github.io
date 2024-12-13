@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .titulo {
+            font-size: 24px;
+            color: #00ff00;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .formulario {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 18px;
+        }
+
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00ff00;
+            color: black;
+            cursor: pointer;
+        }
+
+        .carros-adicionados {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carro {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .carro img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .remover-btn, .editar-btn {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            border: none;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        .editar-btn {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="titulo">PANEL ADMIN</div>
+
+    <!-- Formulário para adicionar um novo carro -->
+    <div class="formulario">
+        <h2>Adicionar Novo Carro</h2>
+        <input type="text" id="nomeCliente" placeholder="Nome do Cliente">
+        <input type="text" id="nomeMecanico" placeholder="Nome do Mecânico">
+        <input type="text" id="placaCarro" placeholder="Placa do Carro">
+        <input type="text" id="imagemCarro" placeholder="URL da Imagem do Carro">
+        <input type="text" id="responsavel" placeholder="Responsável pelo Carro">
+        <input type="text" id="status" placeholder="Status (Pronto ou Não)">
+        <button onclick="adicionarCarro()">Adicionar Carro</button>
+    </div>
+
+    <!-- Lista de carros já adicionados -->
+    <div class="carros-adicionados">
+        <h2>Carros Adicionados</h2>
+        <div id="carrosLista"></div>
+    </div>
+
+    <script>
+        // Função para adicionar um novo carro
+        function adicionarCarro() {
+            const nomeCliente = document.getElementById('nomeCliente').value;
+            const nomeMecanico = document.getElementById('nomeMecanico').value;
+            const placaCarro = document.getElementById('placaCarro').value;
+            const imagemCarro = document.getElementById('imagemCarro').value;
+            const responsavel = document.getElementById('responsavel').value;
+            const status = document.getElementById('status').value;
+
+            if (nomeCliente && nomeMecanico && placaCarro && imagemCarro && responsavel && status) {
+                let carros = JSON.parse(localStorage.getItem('carros')) || [];
+                carros.push({ nomeCliente, nomeMecanico, placaCarro, imagemCarro, responsavel, status });
+                localStorage.setItem('carros', JSON.stringify(carros));
+
+                alert("Carro adicionado com sucesso!");
+                carregarCarros();
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+
+        // Função para carregar os carros do localStorage e exibir no painel
+        function carregarCarros() {
+            const carros = JSON.parse(localStorage.getItem('carros')) || [];
+            const carrosLista = document.getElementById('carrosLista');
+            carrosLista.innerHTML = '';  // Limpa a lista antes de adicionar novamente
+
+            carros.forEach((carro, index) => {
+                const carroDiv = document.createElement('div');
+                carroDiv.classList.add('carro');
+                carroDiv.innerHTML = `
+                    <div style="display: flex; align-items: center;">
+                        <img src="${carro.imagemCarro}" alt="Imagem do Carro">
+                        <div>
+                            <p><strong>Cliente:</strong> ${carro.nomeCliente}</p>
+                            <p><strong>Mecânico:</strong> ${carro.nomeMecanico}</p>
+                            <p><strong>Placa:</strong> ${carro.placaCarro}</p>
+                            <p><strong>Responsável:</strong> ${carro.responsavel}</p>
+                            <p><strong>Status:</strong> ${carro.status}</p>
+                        </div>
+                    </div>
+                    <button class="editar-btn" onclick="editarCarro(${index})">Editar</button>
+                    <button class="remover-btn" onclick="removerCarro(${index})">Remover</button>
+                `;
+                carrosLista.appendChild(carroDiv);
+            });
+        }
+
+        // Função para editar as informações de um carro
+        function editarCarro(index) {
+            let carros = JSON.parse(localStorage.getItem('carros')) || [];
+            const carro = carros[index];
+
+            // Preenche o formulário com as informações atuais
+            document.getElementById('nomeCliente').value = carro.nomeCliente;
+            document.getElementById('nomeMecanico').value = carro.nomeMecanico;
+            document.getElementById('placaCarro').value = carro.placaCarro;
+            document.getElementById('imagemCarro').value = carro.imagemCarro;
+            document.getElementById('responsavel').value = carro.responsavel;
+            document.getElementById('status').value = carro.status;
+
+            // Remove o carro original
+            carros.splice(index, 1);
+            localStorage.setItem('carros', JSON.stringify(carros));
+
+            // Adiciona o carro com as novas informações ao clicar no botão "Adicionar Carro"
+            document.querySelector('button[onclick="adicionarCarro()"]').onclick = function () {
+                adicionarCarro();
+            };
+        }
+
+        // Função para remover um carro do localStorage
+        function removerCarro(index) {
+            let carros = JSON.parse(localStorage.getItem('carros')) || [];
+            carros.splice(index, 1);  // Remove o carro da posição indicada
+            localStorage.setItem('carros', JSON.stringify(carros));
+
+            alert("Carro removido com sucesso!");
+            carregarCarros();  // Atualiza a lista de carros
+        }
+
+        // Carrega os carros ao abrir a página
+        window.onload = carregarCarros;
+    </script>
+</body>
+</html>
