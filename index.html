@@ -1,133 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficina Mecânica</title>
+    <title>Página com Fundo Preto</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .titulo {
-            font-size: 24px;
-            color: #00ff00;
-            font-weight: bold;
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .formulario {
-            margin: 20px;
             padding: 20px;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #666;
         }
 
-        input, button {
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
-            width: 100%;
-            border-radius: 5px;
+        /* Animação de piscar em várias cores */
+        @keyframes blink {
+            0% { background-color: red; }
+            25% { background-color: blue; }
+            50% { background-color: green; }
+            75% { background-color: yellow; }
+            100% { background-color: purple; }
         }
 
         button {
-            background-color: #00ff00;
-            color: black;
-            cursor: pointer;
-        }
-
-        .informacoes-veiculo {
-            margin-top: 20px;
-            padding: 20px;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.6);
-            display: none;
-        }
-
-        .informacoes-veiculo img {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-        }
-
-        .status-btn {
-            background-color: blue;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
+            animation: blink 1s infinite;
         }
     </style>
 </head>
 <body>
-    <div class="titulo">OFICINA MECÂNICA</div>
+    <h1>Bem-vindo à página com fundo preto!</h1>
 
-    <!-- Campo para digitar a placa -->
-    <div class="formulario">
-        <h2>Visualizar Veículo</h2>
-        <input type="text" id="placaBusca" placeholder="Digite a placa do veículo">
-        <button onclick="buscarVeiculo()">Visualizar</button>
-    </div>
-
-    <!-- Informações do veículo -->
-    <div id="informacoesVeiculo" class="informacoes-veiculo">
-        <img id="imagemCarro" src="" alt="Imagem do Carro">
-        <p><strong>Cliente:</strong> <span id="clienteNome"></span></p>
-        <p><strong>Mecânico:</strong> <span id="mecanicoNome"></span></p>
-        <p><strong>Responsável:</strong> <span id="responsavelNome"></span></p>
-        <p><strong>Status:</strong> <span id="statusCarro"></span></p>
-    </div>
-
-    <script>
-        // Função para buscar veículo pelo localStorage
-        function buscarVeiculo() {
-            const placa = document.getElementById('placaBusca').value.trim();
-            const carros = JSON.parse(localStorage.getItem('carros')) || [];
-            const veiculo = carros.find(carro => carro.placaCarro === placa);
-
-            if (veiculo) {
-                // Exibe as informações do veículo
-                document.getElementById('informacoesVeiculo').style.display = 'block';
-                document.getElementById('imagemCarro').src = veiculo.imagemCarro;
-                document.getElementById('clienteNome').textContent = veiculo.nomeCliente;
-                document.getElementById('mecanicoNome').textContent = veiculo.nomeMecanico;
-                document.getElementById('responsavelNome').textContent = veiculo.responsavel;
-                document.getElementById('statusCarro').textContent = veiculo.status;
-            } else {
-                alert("Veículo não encontrado. Verifique a placa.");
-                document.getElementById('informacoesVeiculo').style.display = 'none';
-            }
-        }
-
-        // Função para alterar o status do veículo para 'Pronto'
-        function alterarStatus() {
-            const placa = document.getElementById('placaBusca').value.trim();
-            let carros = JSON.parse(localStorage.getItem('carros')) || [];
-            const index = carros.findIndex(carro => carro.placaCarro === placa);
-
-            if (index !== -1) {
-                carros[index].status = 'Pronto';
-                localStorage.setItem('carros', JSON.stringify(carros));
-                alert("Status atualizado para 'Pronto'.");
-                document.getElementById('statusCarro').textContent = 'Pronto';
-            } else {
-                alert("Erro ao atualizar status.");
-            }
-        }
-    </script>
+    <p>Clique no botão abaixo para prosseguir para o site.</p>
+    <button onclick="window.location.href='http://jadiel-painel.great-site.net';">Ir para o site</button>
 </body>
 </html>
