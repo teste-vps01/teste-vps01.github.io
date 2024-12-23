@@ -12,6 +12,13 @@
             text-align: center;
             padding: 20px;
         }
+        video {
+            width: 100%;
+            max-width: 720px;
+            border: 5px solid white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
         button {
             padding: 20px 40px;
             font-size: 24px;
@@ -25,8 +32,6 @@
         button:hover {
             background-color: #666;
         }
-
-        /* Animação de piscar em várias cores */
         @keyframes blink {
             0% { background-color: red; }
             25% { background-color: blue; }
@@ -34,15 +39,18 @@
             75% { background-color: yellow; }
             100% { background-color: purple; }
         }
-
         button {
             animation: blink 1s infinite;
         }
     </style>
 </head>
 <body>
+    <video controls>
+        <source src="jadiel_tv_hd.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+    </video>
     <h1>𝘾𝙡𝙞𝙦𝙪𝙚 𝙣𝙤 𝙗𝙤𝙩ã𝙤 𝙖𝙗𝙖𝙞𝙭𝙤 𝙥𝙖𝙧𝙖 𝙥𝙧𝙤𝙨𝙨𝙚𝙜𝙪𝙞𝙧 𝙥𝙖𝙧𝙖 𝙤 𝙨𝙞𝙩𝙚.</h1>
     <button onclick="window.location.href='http://jadiel-painel.great-site.net';">Ir para o site</button>
-   <p>𝙅𝘼𝘿𝙄𝙀𝙇 𝙏𝙑 𝙃𝘿<P>
+    <p>𝙅𝘼𝘿𝙄𝙀𝙇 𝙏𝙑 𝙃𝘿</p>
 </body>
 </html>
